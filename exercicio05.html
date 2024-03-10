@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input class="entrada_string_usuario" placeholder="Informe uma palavra...">
+    <button class="inverte_string">Aperte aqui para inverter sua palavra!</button>
+</body>
+<script>
+    input = document.querySelector('.entrada_string_usuario');
+    input.focus();
+
+    function inverteString() {
+        let resultado = "";
+        for(let contador = input.value.length - 1; contador >= 0; contador--) {
+            resultado += input.value[contador];
+        }
+        alert(`O resultado é: ${resultado}`);
+        input.value = "";
+        input.focus();
+        return;
+    }
+
+    button = document.querySelector('.inverte_string');
+    button.onclick = inverteString;
+</script>
+</html>
