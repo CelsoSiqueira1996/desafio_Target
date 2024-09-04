@@ -1,55 +1,41 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles.css">
     <title>Target Challenge</title>
 </head>
-
 <body>
     <div>
-        <input class="entrada_numero_usuario" placeholder="Informe um número...">
-        <button class="calcular_fibonacci">Gerar sequência de Fibonacci</button>
+        <input class="entrada_string_usuario" placeholder="Informe uma palavra...">
+        <button class="conta_as">Verificar letra 'a'</button>
     </div>
 </body>
 <script>
-    var input = document.querySelector('.entrada_numero_usuario');
-    input.focus()
+    input = document.querySelector('.entrada_string_usuario');
+    input.focus();
 
-    function geraFibonacci() {
-        let sequencia = [0, 1];
-        let acumulador = 1;
-        let indice = 0;
-
-        const valorInformado = parseInt(input.value);
-
-        if (!valorInformado || valorInformado < 0) {
-            alert('O valor informado deve ser um número maior ou igual a 1.');
-            valorInformado = "";
-            input.focus();
-            return;
+    function inverteString() {
+        const palavraInformada = input.value;
+        let resultado = 0;
+        for(let contador = palavraInformada.length - 1; contador >= 0; contador--) {
+            if(palavraInformada[contador] == 'a' || palavraInformada[contador] == 'A') {
+                resultado++;
+            }
         }
-        while (acumulador <= valorInformado) {
-            sequencia.push(acumulador);
-            indice++;
-            acumulador += sequencia[indice];
-        }
-        if (sequencia[sequencia.length - 1] == valorInformado) {
-            alert(`A sequência de Fibonacci gerada é: ${sequencia.join()}.\nO número informado ${input.value} pertence à sequência.`);
+
+        if(!resultado) {
+            alert(`Não foi encontrada nenhuma letra 'a' na palavra ${palavraInformada}.`);
         } else {
-            alert(`A sequência de Fibonacci gerada é: ${sequencia.join()}.\nO número informado ${input.value} não pertence à sequência.`);
+            alert(`A quantidade de letras 'a' na palavra ${palavraInformada} é: ${resultado}`);
         }
-
         input.value = "";
         input.focus();
         return;
     }
 
-    button = document.querySelector('.calcular_fibonacci');
-    button.onclick = geraFibonacci;
-
+    button = document.querySelector('.conta_as');
+    button.onclick = inverteString;
 </script>
-
 </html>
