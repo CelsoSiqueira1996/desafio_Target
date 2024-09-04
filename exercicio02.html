@@ -1,13 +1,18 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <link rel="stylesheet" href="styles.css">
+    <title>Target Challenge</title>
 </head>
+
 <body>
-    <input class="entrada_numero_usuario" placeholder="Informe um número...">
-    <button class="calcular_fibonacci">Gerar sequência de Fibonacci</button>
+    <div>
+        <input class="entrada_numero_usuario" placeholder="Informe um número...">
+        <button class="calcular_fibonacci">Gerar sequência de Fibonacci</button>
+    </div>
 </body>
 <script>
     var input = document.querySelector('.entrada_numero_usuario');
@@ -18,18 +23,20 @@
         let acumulador = 1;
         let indice = 0;
 
-        if(input.value < 1) {
-            alert('O valor informado deve ser maior ou igual a 1!');
-            input.value = "";
+        const valorInformado = parseInt(input.value);
+
+        if (!valorInformado || valorInformado < 0) {
+            alert('O valor informado deve ser um número maior ou igual a 1.');
+            valorInformado = "";
             input.focus();
             return;
         }
-        while(acumulador <= input.value) {
+        while (acumulador <= valorInformado) {
             sequencia.push(acumulador);
             indice++;
             acumulador += sequencia[indice];
         }
-        if(sequencia[sequencia.length-1] == input.value) {
+        if (sequencia[sequencia.length - 1] == valorInformado) {
             alert(`A sequência de Fibonacci gerada é: ${sequencia.join()}.\nO número informado ${input.value} pertence à sequência.`);
         } else {
             alert(`A sequência de Fibonacci gerada é: ${sequencia.join()}.\nO número informado ${input.value} não pertence à sequência.`);
@@ -39,8 +46,10 @@
         input.focus();
         return;
     }
+
     button = document.querySelector('.calcular_fibonacci');
     button.onclick = geraFibonacci;
-</script>
-</html>
 
+</script>
+
+</html>
