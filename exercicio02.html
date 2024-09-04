@@ -17,11 +17,10 @@
     input.focus();
 
     function inverteString() {
-        debugger
-        const palavraInformada = input.value.normalize('NFD').replace(/[\u0300-\u036f]/g, "");
+        const palavraInformada = input.value.normalize('NFD').replace(/[\u0300-\u036f]/g, "").toLowerCase();
         let resultado = 0;
         for(let contador = palavraInformada.length - 1; contador >= 0; contador--) {
-            if(palavraInformada[contador] == 'a' || palavraInformada[contador] == 'A') {
+            if(palavraInformada[contador] == 'a') {
                 resultado++;
             }
         }
