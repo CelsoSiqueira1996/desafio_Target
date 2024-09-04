@@ -17,7 +17,8 @@
     input.focus();
 
     function inverteString() {
-        const palavraInformada = input.value;
+        debugger
+        const palavraInformada = input.value.normalize('NFD').replace(/[\u0300-\u036f]/g, "");
         let resultado = 0;
         for(let contador = palavraInformada.length - 1; contador >= 0; contador--) {
             if(palavraInformada[contador] == 'a' || palavraInformada[contador] == 'A') {
@@ -26,9 +27,9 @@
         }
 
         if(!resultado) {
-            alert(`Não foi encontrada nenhuma letra 'a' na palavra ${palavraInformada}.`);
+            alert(`Não foi encontrada nenhuma letra 'a' na palavra ${input.value}.`);
         } else {
-            alert(`A quantidade de letras 'a' na palavra ${palavraInformada} é: ${resultado}`);
+            alert(`A quantidade de letras 'a' na palavra ${input.value} é: ${resultado}`);
         }
         input.value = "";
         input.focus();
